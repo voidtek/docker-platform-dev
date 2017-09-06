@@ -16,8 +16,3 @@ behat.base_url = http://localhost:8080/build
 
 # The URL of the Behat webdriver host.
 behat.wd_host.url = http://localhost:8643/wd/hub
-
-# Host configuration
-# ------------------
-
-server.docroot = /platform-dev

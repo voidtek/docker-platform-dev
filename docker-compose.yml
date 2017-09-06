@@ -2,11 +2,11 @@ version: '2'
 services:
   web:
     image: fpfis/php56-dev
-    working_dir: /platform-dev
+    working_dir: /var/www/html
     environment:
-      - DOCUMENT_ROOT=/platform-dev
+      - DOCUMENT_ROOT=/var/www/html
     volumes:
-      - ./platform-dev:/platform-dev
+      - ./platform-dev:/var/www/html
     ports:
       - 8080:8080
     depends_on:
