@@ -1,0 +1,15 @@
+version: '2'
+services:
+  web:
+    image: fpfis/php56-dev
+    working_dir: /platform-dev
+    environment:
+      - DOCUMENT_ROOT=/platform-dev
+    volumes:
+      - ./platform-dev:/platform-dev
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysql
+  mysql:
+    image: fpfis/mysql56

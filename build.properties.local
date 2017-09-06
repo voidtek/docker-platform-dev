@@ -1,0 +1,23 @@
+# Drupal configuration
+# --------------------
+
+# Database settings.
+drupal.db.user = root
+drupal.db.password =
+drupal.db.host = mysql
+drupal.db.port = 3306
+drupal.db.url = ${drupal.db.type}://${drupal.db.user}:${drupal.db.password}@${drupal.db.host}:${drupal.db.port}/${drupal.db.name}
+
+composer.bin = /usr/local/bin/composer
+phantomjs.bin = ${project.basedir}/bin/phantomjs
+
+# The base URL to use in Behat tests.
+behat.base_url = http://localhost:8080/build
+
+# The URL of the Behat webdriver host.
+behat.wd_host.url = http://localhost:8643/wd/hub
+
+# Host configuration
+# ------------------
+
+server.docroot = /platform-dev
