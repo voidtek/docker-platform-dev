@@ -10,3 +10,7 @@ NextEuropa platform on Docker
 - $ docker-compose run web ./bin/phing install-platform
 - ...
 - $ docker-compose down
+
+## Development
+
+- $ docker-compose exec web sh
