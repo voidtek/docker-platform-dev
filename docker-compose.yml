@@ -5,11 +5,21 @@ services:
     working_dir: /var/www/html
     environment:
       - DOCUMENT_ROOT=/var/www/html
+      - BLACKFIRE_CLIENT_ID
+      - BLACKFIRE_CLIENT_TOKEN
     volumes:
       - ./platform-dev:/var/www/html
+      - ./ec_resp:/var/www/ec_resp
+      - ./atomium:/var/www/atomium
+      - ./ec_europa:/var/www/ec_europa
     ports:
-      - 8080:8080
+      - ${HTTP_PORT}:8080
     depends_on:
       - mysql
+  blackfire:
+    image: blackfire/blackfire
+    environment:
+      - BLACKFIRE_SERVER_ID
+      - BLACKFIRE_SERVER_TOKEN
   mysql:
     image: fpfis/mysql56
