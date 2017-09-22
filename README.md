@@ -18,16 +18,22 @@ NextEuropa platform on Docker
 
 or use the script: init-platform-dev.sh
 
-# Development
+### Development
 
 - $ docker-compose run web drush cc all -r ./build
 - $ docker-compose exec web sh
 
-# Stop containers
+### Stop containers
 
 - $ docker-compose down
 
-## Tools/links
+## More informations
+
+### Persitent database
+
+Docker will create the volume for you in the /var/lib/docker/volumes folder. This volume persist as long as you are not typing docker-compose down -v
+
+### Tools/links
 
 - Site: http://your-site/build
 - Phpmyadmin: http://your-site/phpmyadmin

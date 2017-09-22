@@ -23,3 +23,7 @@ services:
       - BLACKFIRE_SERVER_TOKEN
   mysql:
     image: fpfis/mysql56
+    volumes:
+      - my-datavolume:/var/lib/mysql
+volumes:
+  my-datavolume:
