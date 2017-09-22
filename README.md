@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/voidtek/docker-platform-dev.svg?branch=master)](https://travis-ci.org/voidtek/docker-platform-dev)
+
 # docker-platform-dev
 NextEuropa platform on Docker
 
