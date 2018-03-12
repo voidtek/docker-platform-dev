@@ -4,22 +4,39 @@ services:
   - docker
   - docker-compose
 
-before_script:
-  - sudo /etc/init.d/mysql stop
+env:
+  global:
+    - DOCKER_COMPOSE_VERSION=1.19.0
+  matrix:
+    - PLATFORM_VERSION=master
+    - PLATFORM_VERSION=release-2.5
 
-script:
-  - git clone https://github.com/ec-europa/platform-dev.git
+before_install:
+  - sudo /etc/init.d/mysql stop
+  - git clone -b $PLATFORM_VERSION https://github.com/ec-europa/platform-dev.git
   - git clone https://github.com/ec-europa/atomium.git
   - git clone https://github.com/ec-europa/ec_resp.git
   - git clone https://github.com/ec-europa/ec_europa.git
   - cp build.properties.local platform-dev/
-  - docker-compose up -d
+  - docker-compose build
+  - docker-compose up --no-start
+  - docker-compose start
+
+install:
   - docker-compose run web composer install
   - docker-compose run web ./bin/phing build-platform-dev
   - docker-compose run web ./bin/phing install-platform
+
+before_script:
   - rm -rf platform-dev/profiles/multisite_drupal_standard/themes/*
   - ln -s ../../../../atomium ./platform-dev/profiles/multisite_drupal_standard/themes/
   - ln -s ../../../../ec_resp ./platform-dev/profiles/multisite_drupal_standard/themes/
   - ln -s ../../../../ec_europa ./platform-dev/profiles/multisite_drupal_standard/themes/
-  - sleep 60
-  - docker-compose down -v
+
+script:
+  - docker-compose run web ./bin/phpcs
+  - docker-compose run web ./bin/phpunit -c tests/phpunit.xml
+  - docker-compose run web ./bin/behat -c tests/behat.yml
+
+  notifications:
+    email: false

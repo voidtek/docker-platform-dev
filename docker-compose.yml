@@ -25,5 +25,21 @@ services:
     image: fpfis/mysql56
     volumes:
       - my-datavolume:/var/lib/mysql
+  selhub:
+    image: selenium/hub
+    ports:
+      - 4444:4444
+  nodeff:
+    image: selenium/node-firefox-debug
+    ports:
+      - 5900
+    links:
+      - selhub:hub
+  nodechrome:
+    image: selenium/node-chrome-debug
+    ports:
+      - 5900
+    links:
+      - selhub:hub
 volumes:
   my-datavolume:

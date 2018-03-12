@@ -7,7 +7,9 @@ git clone git@github.com:ec-europa/ec_europa.git
 
 cp build.properties.local platform-dev/
 
-docker-compose up -d
+docker-compose build
+docker-compose up --no-start
+docker-compose start
 docker-compose run web composer install
 docker-compose run web ./bin/phing build-platform-dev
 docker-compose run web ./bin/phing install-platform
