@@ -1,5 +1,6 @@
 version: '2'
 services:
+
   web:
     image: fpfis/php56-dev
     working_dir: /var/www/html
@@ -14,28 +15,47 @@ services:
       - ./ec_europa:/var/www/ec_europa
     ports:
       - ${HTTP_PORT}:8080
+    links:
+      - phantomjs
+      - selenium-chrome
+      - selenium-firefox
     depends_on:
       - mysql
+
+  mysql:
+    image: fpfis/mysql56
+    volumes:
+      - my-datavolume:/var/lib/mysql
+
   blackfire:
     image: blackfire/blackfire
     environment:
       - BLACKFIRE_SERVER_ID
       - BLACKFIRE_SERVER_TOKEN
-  mysql:
-    image: fpfis/mysql56
-    volumes:
-      - my-datavolume:/var/lib/mysql
-  hub:
-    image: selenium/hub
+
+  phantomjs:
+    image: wernight/phantomjs
+    container_name: phantomjs
+    restart: always
+    ports:
+      - "4442:8910"
+    command: "phantomjs --webdriver=8910 --ignore-ssl-errors=true --ssl-protocol=any"
+
+  selenium-chrome:
+    image: selenium/standalone-chrome
+    container_name: selenium-chrome
+    restart: always
+    ports:
+      - "4440:4444"
+
+  selenium-firefox:
+    image: selenium/standalone-firefox
+    container_name: selenium-firefox
+    restart: always
     ports:
       - "4444:4444"
-  firefox:
-    image: selenium/node-firefox
-    links:
-      - hub
-  chrome:
-    image: selenium/node-chrome
-    links:
-      - hub
+
 volumes:
   my-datavolume:
+
+
