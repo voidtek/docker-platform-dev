@@ -32,7 +32,7 @@ before_install:
 
 install:
   - docker-compose exec web composer install
-  - docker-compose exec web ./bin/phing build-platform-dev
+  - docker-compose exec web ./bin/phing build-platform-dev -D'platform.profile.name'=$PLATFORM_PROFILE
   - docker-compose exec web ./bin/phing install-platform -D'platform.profile.name'=$PLATFORM_PROFILE -D'platform.site.theme_default'=$THEME_DEFAULT
 
 script:
