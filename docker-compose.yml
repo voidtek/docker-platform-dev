@@ -15,10 +15,10 @@ services:
       - ./ec_europa:/var/www/ec_europa
     ports:
       - ${HTTP_PORT}:8080
+      - 8888:8888
+      - 28080:28080
     links:
       - phantomjs
-      - selenium-chrome
-      - selenium-firefox
     depends_on:
       - mysql
 
