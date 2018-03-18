@@ -4,16 +4,27 @@ services:
   - docker
   - docker-compose
 
-env:
-  global:
-    - DOCKER_COMPOSE_VERSION=1.19.0
-  matrix:
-    - PLATFORM_VERSION=master
-    - PLATFORM_VERSION=release-2.5
+global:
+  - DOCKER_COMPOSE_VERSION=1.19.0
+
+matrix:
+  env:
+    - PLATFORM_PROFILE=multisite_drupal_standard
+      THEME_DEFAULT=ec_resp
+      BEHAT_PROFILE=standard_ec_resp
+    - PLATFORM_PROFILE=multisite_drupal_standard
+      THEME_DEFAULT=ec_europa
+      BEHAT_PROFILE=default
+    - PLATFORM_PROFILE=multisite_drupal_communities
+      THEME_DEFAULT=ec_resp
+      BEHAT_PROFILE=communities_ec_resp
+    - PLATFORM_PROFILE=multisite_drupal_communities
+      THEME_DEFAULT=ec_europa
+      BEHAT_PROFILE=communities
 
 before_install:
   - sudo /etc/init.d/mysql stop
-  - git clone -b $PLATFORM_VERSION https://github.com/ec-europa/platform-dev.git
+  - git clone https://github.com/ec-europa/platform-dev.git
   - cp build.properties.local platform-dev/
   - docker-compose build
   - docker-compose up --no-start
@@ -22,12 +33,12 @@ before_install:
 install:
   - docker-compose exec web composer install
   - docker-compose exec web ./bin/phing build-platform-dev
-  - docker-compose exec web ./bin/phing install-platform
+  - docker-compose exec web ./bin/phing install-platform -D'platform.profile.name'='$PLATFORM_PROFILE' -D'platform.site.theme_default'='$THEME_DEFAULT'
 
 script:
   - docker-compose exec web ./bin/phpcs
   - docker-compose exec web ./bin/phpunit -c tests/phpunit.xml
-  - docker-compose exec web ./bin/behat -c tests/behat.yml
+  - docker-compose exec web ./bin/behat -c tests/behat.yml -p $BEHAT_PROFILE
 
 notifications:
  email: false
