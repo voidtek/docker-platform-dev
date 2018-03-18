@@ -23,9 +23,9 @@ before_install:
   - docker-compose start
 
 install:
-  - docker-compose run web composer install
-  - docker-compose run web ./bin/phing build-platform-dev
-  - docker-compose run web ./bin/phing install-platform
+  - docker-compose exec web composer install
+  - docker-compose exec web ./bin/phing build-platform-dev
+  - docker-compose exec web ./bin/phing install-platform
 
 before_script:
   - rm -rf platform-dev/profiles/multisite_drupal_standard/themes/*
@@ -34,9 +34,9 @@ before_script:
   - ln -s ../../../../ec_europa ./platform-dev/profiles/multisite_drupal_standard/themes/
 
 script:
-  - docker-compose run web ./bin/phpcs
-  - docker-compose run web ./bin/phpunit -c tests/phpunit.xml
-  - docker-compose run web ./bin/behat -c tests/behat.yml
+  - docker-compose exec web ./bin/phpcs
+  - docker-compose exec web ./bin/phpunit -c tests/phpunit.xml
+  - docker-compose exec web ./bin/behat -c tests/behat.yml
 
 notifications:
  email: false

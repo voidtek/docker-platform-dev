@@ -5,20 +5,17 @@
 platform.profile.name = multisite_drupal_standard
 
 # The default theme to enable, set to either "ec_europa" or "ec_resp".
-platform.site.theme_default = ec_europa
+platform.site.theme_default = ec_resp
 
 # Database settings.
 drupal.db.user = root
 drupal.db.password =
-drupal.db.host = mysql
-drupal.db.port = 3306
-drupal.db.url = ${drupal.db.type}://${drupal.db.user}:${drupal.db.password}@${drupal.db.host}:${drupal.db.port}/${drupal.db.name}
 
 composer.bin = /usr/local/bin/composer
 phantomjs.bin = ${project.basedir}/bin/phantomjs
 
 # The base URL to use in Behat tests.
-behat.base_url = http://web:8080/build
+behat.base_url = http://localhost:8080/build
 
 # The URL of the Behat webdriver host.
-behat.wd_host.url = http://phantomjs:8910/wd/hub
+behat.wd_host.url = http://localhost:8910/wd/hub
