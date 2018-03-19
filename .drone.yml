@@ -1,5 +1,4 @@
 pipeline:
   test:
     image: plugins/docker
-    compose:
-      from-file: docker-compose.yml
+    from-file: docker-compose.yml
