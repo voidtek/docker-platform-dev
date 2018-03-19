@@ -38,7 +38,7 @@ install:
 script:
   - docker-compose exec web ./bin/phpcs
   - docker-compose exec web ./bin/phpunit -c tests/phpunit.xml
-  - travis_wait 60 docker-compose exec web ./bin/behat -c tests/behat.yml -p $BEHAT_PROFILE
+  - docker-compose exec web ./bin/behat -c tests/behat.yml -p $BEHAT_PROFILE
 
 notifications:
  email: false
