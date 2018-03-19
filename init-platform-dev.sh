@@ -18,4 +18,3 @@ rm -rf platform-dev/profiles/multisite_drupal_standard/themes/*
 ln -s ../../../../atomium ./platform-dev/profiles/multisite_drupal_standard/themes/
 ln -s ../../../../ec_resp ./platform-dev/profiles/multisite_drupal_standard/themes/
 ln -s ../../../../ec_europa ./platform-dev/profiles/multisite_drupal_standard/themes/
-
