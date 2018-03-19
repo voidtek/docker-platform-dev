@@ -20,10 +20,10 @@ SSH=$HOME/.ssh/authorized_keys
 PUB=$DIR/cloud9/.devops.pub
 grep -q devops $SSH||(sudo cat $PUB>>$SSH&&curl https://github.com/$GITHUB_USER.keys>>$SSH)
 
-git clone git@github.com:ec-europa/platform-dev.git
-git clone git@github.com:ec-europa/atomium.git
-git clone git@github.com:ec-europa/ec_resp.git
-git clone git@github.com:ec-europa/ec_europa.git
+git clone https://github.com/ec-europa/platform-dev.git
+git clone https://github.com/ec-europa/atomium.git
+git clone https://github.com/ec-europa/ec_resp.git
+git clone https://github.com/ec-europa/ec_europa.git
 
 cp build.properties.local platform-dev/
 
