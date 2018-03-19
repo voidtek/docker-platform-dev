@@ -27,11 +27,11 @@ services:
       - my-datavolume:/var/lib/mysql
     network_mode: "host"
 
-  blackfire:
-    image: blackfire/blackfire
-    environment:
-      - BLACKFIRE_SERVER_ID
-      - BLACKFIRE_SERVER_TOKEN
+#  blackfire:
+#    image: blackfire/blackfire
+#    environment:
+#      - BLACKFIRE_SERVER_ID
+#      - BLACKFIRE_SERVER_TOKEN
 
   phantomjs:
     image: wernight/phantomjs
@@ -42,21 +42,21 @@ services:
     command: "phantomjs --webdriver=8910 --ignore-ssl-errors=true --ssl-protocol=any"
     network_mode: "host"
 
-  selenium-chrome:
-    image: selenium/standalone-chrome
-    container_name: selenium-chrome
-    restart: always
-    ports:
-      - 4440:4444
-    network_mode: "host"
+#  selenium-chrome:
+#    image: selenium/standalone-chrome
+#    container_name: selenium-chrome
+#    restart: always
+#    ports:
+#      - 4440:4444
+#    network_mode: "host"
 
-  selenium-firefox:
-    image: selenium/standalone-firefox
-    container_name: selenium-firefox
-    restart: always
-    ports:
-      - 4444:4444
-    network_mode: "host"
+#  selenium-firefox:
+#    image: selenium/standalone-firefox
+#    container_name: selenium-firefox
+#    restart: always
+#    ports:
+#      - 4444:4444
+#    network_mode: "host"
 
 volumes:
   my-datavolume:
