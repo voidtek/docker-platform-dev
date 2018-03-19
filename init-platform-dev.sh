@@ -34,7 +34,11 @@ docker-compose run web composer install
 docker-compose run web ./bin/phing build-platform-dev
 docker-compose run web ./bin/phing install-platform
 
-rm -rf platform-dev/profiles/multisite_drupal_standard/themes/*
-ln -s ../../../../atomium ./platform-dev/profiles/multisite_drupal_standard/themes/
-ln -s ../../../../ec_resp ./platform-dev/profiles/multisite_drupal_standard/themes/
-ln -s ../../../../ec_europa ./platform-dev/profiles/multisite_drupal_standard/themes/
+# rm -rf platform-dev/profiles/multisite_drupal_standard/themes/*
+# ln -s ../../../../atomium ./platform-dev/profiles/multisite_drupal_standard/themes/
+# ln -s ../../../../ec_resp ./platform-dev/profiles/multisite_drupal_standard/themes/
+# ln -s ../../../../ec_europa ./platform-dev/profiles/multisite_drupal_standard/themes/
+
+docker-compose exec web ./bin/phpcs
+docker-compose exec web ./bin/phpunit -c tests/phpunit.xml
+docker-compose exec web ./bin/behat -c tests/behat.yml
