@@ -1,4 +1,6 @@
 pipeline:
   test:
+    image: plugins/docker
+    repo: drone/drone
     compose:
       from-file: docker-compose.yml
