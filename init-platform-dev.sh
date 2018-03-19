@@ -30,9 +30,9 @@ cp build.properties.local platform-dev/
 docker-compose build
 docker-compose up --no-start
 docker-compose start
-docker-compose run web composer install
-docker-compose run web ./bin/phing build-platform-dev
-docker-compose run web ./bin/phing install-platform
+docker-compose exec web composer install
+docker-compose exec web ./bin/phing build-platform-dev
+docker-compose exec web ./bin/phing install-platform
 
 # rm -rf platform-dev/profiles/multisite_drupal_standard/themes/*
 # ln -s ../../../../atomium ./platform-dev/profiles/multisite_drupal_standard/themes/
