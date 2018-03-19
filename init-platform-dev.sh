@@ -1,5 +1,9 @@
 #!/bin/bash
 
+sudo sysctl vm.dirty_background_ratio=100
+sudo sysctl vm.dirty_ratio=100
+sudo sysctl vm.swappiness=0
+
 git clone git@github.com:ec-europa/platform-dev.git
 git clone git@github.com:ec-europa/atomium.git
 git clone git@github.com:ec-europa/ec_resp.git
