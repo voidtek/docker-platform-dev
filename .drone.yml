@@ -1,2 +1,4 @@
-compose:
-  from-file: docker-compose.yml
+pipeline:
+  test:
+    compose:
+      from-file: docker-compose.yml
