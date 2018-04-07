@@ -18,7 +18,7 @@ phantomjs.bin = ${project.basedir}/bin/phantomjs
 behat.base_url = http://localhost:8080/build
 
 # The URL of the Behat webdriver host.
-behat.wd_host.url = http://localhost:8910/wd/hub
+# behat.wd_host.url = http://localhost:8910/wd/hub
 # behat.wd_host.url = http://localhost:4440/wd/hub
-# behat.wd_host.url = http://localhost:4444/wd/hub
+behat.wd_host.url = http://localhost:4444/wd/hub
 
