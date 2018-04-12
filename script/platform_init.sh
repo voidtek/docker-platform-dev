@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd ..
+
 git clone https://github.com/ec-europa/platform-dev.git
 git clone https://github.com/ec-europa/atomium.git
 git clone https://github.com/ec-europa/ec_resp.git
