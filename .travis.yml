@@ -31,14 +31,14 @@ before_install:
   - docker-compose start
 
 install:
-  - docker-compose exec web composer install
-  - docker-compose exec web ./bin/phing build-platform-dev -D'platform.profile.name'=$PLATFORM_PROFILE
-  - docker-compose exec web ./bin/phing install-platform -D'platform.profile.name'=$PLATFORM_PROFILE -D'platform.site.theme_default'=$THEME_DEFAULT
+  - docker-compose exec -u web web composer install
+  - docker-compose exec -u web web ./bin/phing build-platform-dev -D'platform.profile.name'=$PLATFORM_PROFILE
+  - docker-compose exec -u web web ./bin/phing install-platform -D'platform.profile.name'=$PLATFORM_PROFILE -D'platform.site.theme_default'=$THEME_DEFAULT
 
 script:
-  - docker-compose exec web ./bin/phpcs
-  - docker-compose exec web ./bin/phpunit -c tests/phpunit.xml
-  - docker-compose exec web ./bin/behat -c tests/behat.yml -p $BEHAT_PROFILE
+  - docker-compose exec -u web web ./bin/phpcs
+  - docker-compose exec -u web web ./bin/phpunit -c tests/phpunit.xml
+  - docker-compose exec -u web web ./bin/behat -c tests/behat.yml -p $BEHAT_PROFILE
 
 notifications:
  email: false
