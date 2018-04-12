@@ -6,21 +6,8 @@ NextEuropa platform on Docker
 ## Initialisation
 
 ```
-$ git clone https://github.com/ec-europa/platform-dev.git
-$ git clone https://github.com/ec-europa/ec_resp.git
-$ git clone https://github.com/ec-europa/ec_europa.git
-$ git clone https://github.com/ec-europa/atomium.git
-
-$ cp build.properties.local platform-dev/
-$ docker-compose up -d
-
-$ docker-compose exec web composer install
-$ docker-compose exec web ./bin/phing build-platform-dev
-$ docker-compose exec web ./bin/phing install-platform
-
-$ sudo ln -s ../../../../atomium ./platform-dev/profiles/multisite_drupal_standard/themes/
-$ sudo ln -s ../../../../ec_resp ./platform-dev/profiles/multisite_drupal_standard/themes/
-$ sudo ln -s ../../../../ec_europa ./platform-dev/profiles/multisite_drupal_standard/themes/
+$ cd script
+$ ./platform_init.sh
 ```
 
 ### Development
