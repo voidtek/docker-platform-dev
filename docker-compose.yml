@@ -33,13 +33,13 @@ services:
 #      - BLACKFIRE_SERVER_ID
 #      - BLACKFIRE_SERVER_TOKEN
 
-#  phantomjs:
-#    image: wernight/phantomjs
-#    restart: always
-#    ports:
-#      - 8910:8910
-#    command: "phantomjs --webdriver=8910 --ignore-ssl-errors=true --ssl-protocol=any"
-#    network_mode: "host"
+  phantomjs:
+    image: wernight/phantomjs
+    restart: always
+    ports:
+      - 8910:8910
+    command: "phantomjs --webdriver=8910 --ignore-ssl-errors=true --ssl-protocol=any"
+    network_mode: "host"
 
 #  selenium-chrome:
 #    image: selenium/standalone-chrome
@@ -49,13 +49,13 @@ services:
 #      - 5900:5900
 #    network_mode: "host"
 
-  selenium-firefox:
-    image: selenium/standalone-firefox-debug:2.53.1-beryllium
-    restart: always
-    ports:
-      - 4444:4444
-      - 5900:5900
-    network_mode: "host"
+#  selenium-firefox:
+#    image: selenium/standalone-firefox-debug:2.53.1-beryllium
+#    restart: always
+#    ports:
+#      - 4444:4444
+#      - 5900:5900
+#    network_mode: "host"
 
 volumes:
   my-datavolume:
