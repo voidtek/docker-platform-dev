@@ -4,6 +4,8 @@ sudo sysctl vm.dirty_background_ratio=100
 sudo sysctl vm.dirty_ratio=100
 sudo sysctl vm.swappiness=0
 
+sudo growpart /dev/xvda 1;sudo resize2fs /dev/xvda1
+
 DIR=$HOME/environment
 [ -d $DIR/cloud9/conf.d ]||mkdir -p $DIR/cloud9/conf.d
 KONF=$DIR/cloud9/conf.d/cloud9.conf
