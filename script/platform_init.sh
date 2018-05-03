@@ -8,9 +8,8 @@ git clone https://github.com/ec-europa/ec_europa.git
 
 cp build.properties.local platform-dev/
 
-cd script
-./platform_start.sh
-./platform_build.sh
+script/platform_start.sh
+script/platform_build.sh
 
 cd ..
 rm -rf platform-dev/profiles/multisite_drupal_standard/themes/*
